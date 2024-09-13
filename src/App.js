@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// import { gsap } from "gsap";
+import { Canvas } from '@react-three/fiber';
 
+
+import { OrbitControls } from '@react-three/drei';
+
+import React from 'react';
+import './App.css';
+import './style.css';
+
+import Cyl from './Components/Cyl';
+import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing'
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Canvas flat camera={{fov:60}}>
+   
+          <OrbitControls/>
+          <ambientLight/>
+     <Cyl/>
+     <EffectComposer>
+<Bloom
+    intensity={1.0} // The bloom intensity.
+    luminanceThreshold={0.6} // luminance threshold. Raise this value to mask out darker elements in the scene.
+    luminanceSmoothing={0.3} // smoothness of the luminance threshold. Range is [0, 1]
+    mipmapBlur={true} // Enables or disables mipmap blur.
+/>
+{/* <ToneMapping adaptive/> */}
+</EffectComposer>
+
+  
+    </Canvas>
+
+
   );
 }
 
