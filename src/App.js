@@ -9,7 +9,7 @@ import './App.css';
 import './style.css';
 
 import Cyl from './Components/Cyl';
-import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { Bloom, EffectComposer } from '@react-three/postprocessing'
 function App() {
 
   return (
